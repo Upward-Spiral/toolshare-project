@@ -1,10 +1,8 @@
 require('dotenv').config();
 
-const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express      = require('express');
 const favicon      = require('serve-favicon');
-// const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const session      = require("express-session");
 const MongoStore   = require("connect-mongo")(session);
@@ -48,8 +46,8 @@ app.use(
 
 // Middleware Setup
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors({
   origin: [process.env.client_origin_a, process.env.client_origin_b],
@@ -72,7 +70,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'Tool Hub';
 
 // Middleware Setup
 app.use('/user', protect);
@@ -96,7 +94,6 @@ app.use('/transaction', transaction);
 // Function definitions
 //middleware definition
 function protect (req,res,next){ 
-  // debugger
   if (req.session.currentUser) next()
   else { res.status(403).json({
     messageBody: "Login Required!"

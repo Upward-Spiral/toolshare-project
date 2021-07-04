@@ -1,11 +1,17 @@
 {
   "editor.tabSize": 2,
   "cSpell.words": [
+    "bin",
     "cloudinary",
+    "debug",
     "google",
     "googlemaps",
     "js",
     "maps",
-    "services"
+    "nodemon",
+    "server",
+    "services",
+    "toolshare",
+    "www"
   ]
 }
